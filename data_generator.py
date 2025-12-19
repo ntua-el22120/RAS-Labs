@@ -14,6 +14,10 @@ hdri_dir = "C:\\Python Projects\\BlenderProc\\haven" # Replace with yours
 # Path for traffic sign objs
 obj_dir ="C:\\Python Projects\\BlenderProc\\objs" # Replace with yours
 
+# Path for generated images
+
+generated_path = ""
+
 # Loading the traffic sign objs
 stop = bproc.loader.load_obj(obj_dir+"\\stop.obj")[0]
 priority = bproc.loader.load_obj(obj_dir+"\\priority.obj")[0]
@@ -74,8 +78,8 @@ for i in range(0,40):
             "name": "nothing",
         }
 
-    #with open("C:\\Projects\\Python\\images\\"+str(i)+".json", "w") as f:
-     #   json.dump(data, f, indent=4)
+    with open(generated_path+str(i)+".json", "w") as f:
+        json.dump(data, f, indent=4)
 
 
     # Load a random Haven background
@@ -104,4 +108,5 @@ for i in range(0,40):
     cv2.waitKey(1)
 
     # Save results to disk
-    cv2.imwrite("C:\\Python Projects\\BlenderProc\\eval_set\\" + str(i) + ".png", color_image)
+
+    cv2.imwrite(generated_path + str(i) + ".png", color_image)
